@@ -8,8 +8,12 @@
 </head>
 <body>
 <h2>PS Bank Account Details</h2>
-<p>Account # : ${param.accountNo}</p>
+<%-- <p>Account # : ${param.accountNo}</p>
 <p>Account Holder : ${param.accountHolderName}</p>
-<p>Account Balance : ${param.balance}</p>
+<p>Account Balance : ${param.balance}</p> --%>
+
+<p>Account # : ${accountNo}</p>
+<p>Account Holder : ${accountHolderName}</p>
+<p>Account Balance : ${balance}</p>
 </body>
 </html>

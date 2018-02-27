@@ -1,7 +1,11 @@
 package com.ps.springmvc.psbankapp.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AccountController {
@@ -20,6 +24,14 @@ public class AccountController {
 	public String showAccount() {
 		return "showAccount";
 	}
-	
-	
+	@RequestMapping(value="/saveAccount",method=RequestMethod.POST)
+	public String saveAccount(Model model, HttpServletRequest request) {
+		String accNo = request.getParameter("accountNo");
+		String accHolderName = request.getParameter("accountHolderName");
+		String balance = request.getParameter("balance");
+		model.addAttribute("accountNo",accNo);
+		model.addAttribute("accountHolderName",accHolderName);
+		model.addAttribute("balance",balance);
+		return "showAccount";
+	}
 }
