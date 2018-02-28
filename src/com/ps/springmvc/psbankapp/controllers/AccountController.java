@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ps.springmvc.psbankapp.model.Account;
+
 @Controller
 public class AccountController {
 
@@ -16,7 +18,8 @@ public class AccountController {
 	}
 	
 	@RequestMapping("/new")
-	public String newAccount() {
+	public String newAccount(Model model) {
+		model.addAttribute("account",new Account());
 		return "newAccount";
 	}
 	
@@ -29,9 +32,14 @@ public class AccountController {
 		String accNo = request.getParameter("accountNo");
 		String accHolderName = request.getParameter("accountHolderName");
 		String balance = request.getParameter("balance");
-		model.addAttribute("accountNo",accNo);
+		/*model.addAttribute("accountNo",accNo);
 		model.addAttribute("accountHolderName",accHolderName);
-		model.addAttribute("balance",balance);
+		model.addAttribute("balance",balance);*/
+		Account acc = new Account();
+		acc.setAccountHolderName(accHolderName);
+		acc.setAccountNo(Integer.parseInt(accNo));
+		acc.setBalance(Integer.parseInt(balance));
+		model.addAttribute("account", acc);
 		return "showAccount";
 	}
 }
