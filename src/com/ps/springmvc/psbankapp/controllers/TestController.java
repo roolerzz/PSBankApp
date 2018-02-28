@@ -24,4 +24,8 @@ public class TestController {
 	public String dynamicURL(@PathVariable("userName") String userName) {
 		return "testRequestMapping";
 	}
+	@RequestMapping("*")
+	public String fallBackPage() {
+		return "fileNotFound";
+	}
 }
