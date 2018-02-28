@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,7 +25,8 @@ public class AccountController {
 	}
 	
 	@RequestMapping("/showAccount")
-	public String showAccount() {
+	public String showAccount(Model model, @ModelAttribute("account") Account acc) {
+		model.addAttribute("account",acc);
 		return "showAccount";
 	}
 	@RequestMapping(value="/saveAccount",method=RequestMethod.POST)
