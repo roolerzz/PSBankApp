@@ -53,9 +53,9 @@
 		 </td>
 	</tr>
 	<tr>
-		<td><spring:message code="lbl.psCode" /> : </td>
-		<td><form:input path="psCode" size="30"/>
-		<form:errors path="psCode" cssClass="error"></form:errors>
+		<td><spring:message code="lbl.securityCode" /> : </td>
+		<td><form:input path="securityCode" size="30"/>
+		<form:errors path="securityCode" cssClass="error"></form:errors>
 		 </td>
 	</tr>
 	<tr>
