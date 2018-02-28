@@ -22,11 +22,11 @@ public class Account {
 	@Pattern(regexp="[A-Za-z(\\s)]+",message="Invalid Account Holder name.")
 	private String accountHolderName;
 	
-	@NotNull(message="Account balance can't be blank.")
+	@NotNull/*(message="Account balance can't be blank.")*/
 	@Min(value=5000,message="Minimum balance should not be less than 5000.")
 	private Integer balance;
 	
-	@NotNull(message="Account type can't be blank.")
+	@NotNull/*(message="Account type can't be blank.")*/
 	private String accountType;
 	
 	@NotNull(message="Date Of Birth can't be blank.")
