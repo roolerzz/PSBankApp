@@ -34,4 +34,16 @@
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 	</bean>
+	
+	<bean id="SessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan" value="com.ps.springmvc.psbankapp"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
