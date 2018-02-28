@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>Create New Account</h2>
-<form:form action="showAccount" modelAttribute="account" >
+<form:form action="saveAccount" modelAttribute="account" >
 <table>
 	<tr>
 		<td><spring:message code="lbl.accountNo" /> : </td>
