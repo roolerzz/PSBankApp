@@ -2,6 +2,7 @@ package com.ps.springmvc.psbankapp.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ps.springmvc.psbankapp.model.Account;
+import com.ps.springmvc.psbankapp.services.AccountService;
 
 @Controller
 public class AccountController {
 
+	@Autowired
+	AccountService accountService;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor ste = new StringTrimmerEditor(true);
@@ -31,7 +36,7 @@ public class AccountController {
 	@RequestMapping("/new")
 	public String newAccount(Model model) {
 		model.addAttribute("account",new Account());
-		return "newAccount";
+		return "account-form";
 	}
 	
 	@RequestMapping("/showAccount")
@@ -55,8 +60,10 @@ public class AccountController {
 		return "showAccount";*/
 		
 		if(result.hasErrors())
-			return "newAccount";
+			return "account-form";
 		else 
-			return "showAccount";
+			accountService.saveAccount(account);
+			return "redirect:/list";
+			//return "showAccount";
 	}
 }

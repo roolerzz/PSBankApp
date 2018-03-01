@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<h2>Create New Account</h2>
+<h2>Please fill the account details</h2>
 <form:form action="saveAccount" modelAttribute="account" >
 <table>
 	<tr>
@@ -60,7 +60,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-		<input type="submit" value="Create Account" name="btnSubmit" />
+		<input type="submit" value="Save Account" name="btnSubmit" />
 		</td>
 	</tr>
 	
