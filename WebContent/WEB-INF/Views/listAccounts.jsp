@@ -10,12 +10,23 @@
 <title>PS Bank Account Holder Details</title>
 </head>
 <body>
-	<table border="1" width="100%">
-		<thead>
+	<div class="container">
+		<%@ include file="header.jsp" %>
+		
+		<div class="row">
+			<div class="col-12">
+				<a href="<c:url value='/new' />" class="btn btn-lg btn-primary"/>Add New Account</a>
+			</div>
+		</div>
+		
+		<table class="table table-bordered table-hover">
+		<thead class="bg-success">
 			<tr>
 				<th><spring:message code="lbl.accountNo" /></th>
 				<th><spring:message code="lbl.accountHolderName" /></th>
 				<th><spring:message code="lbl.balance" /></th>
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
 			</tr>
 		<tbody>
 			<c:forEach var="account" items="${accounts}">
@@ -30,12 +41,17 @@
 					<td>${account.accountNo}</td>
 					<td>${account.accountHolderName}</td>
 					<td>${account.balance}</td>
-					<td><a href="${updateLink}">Edit</a></td>
-					<td><a href="${deleteLink}" onClick="if(!(confirm('Are you sure to delete?'))) return false">Delete</a></td>
+					<td><a href="${updateLink}" class="btn btn-warning">Edit</a></td>
+					<td><a href="${deleteLink}" class="btn btn-danger" onClick="if(!(confirm('Are you sure to delete?'))) return false">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 		</thead>
 	</table>
+		
+		<%@ include file="footer.jsp" %>
+	</div>
+
+	
 </body>
 </html>
