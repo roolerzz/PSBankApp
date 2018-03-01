@@ -49,7 +49,7 @@ public class AccountController {
 		return "showAccount";
 	}
 	@RequestMapping(value="/saveAccount",method=RequestMethod.POST)
-	public String saveAccount(@Valid  @ModelAttribute("account") Account account, BindingResult result) {
+	public String saveAccount(@Valid  @ModelAttribute("account") Account account, BindingResult result, Model model) {
 		/*String accNo = request.getParameter("accountNo");
 		String accHolderName = request.getParameter("accountHolderName");
 		String balance = request.getParameter("balance");*/
@@ -65,10 +65,24 @@ public class AccountController {
 		
 		if(result.hasErrors())
 			return "account-form";
-		else 
-			accountService.saveAccount(account);
+		else {
+			String message = "";
+			boolean flag = true;
+			try {
+				accountService.saveAccount(account);
+			}
+			catch (Exception e) {
+				message = e.getMessage();
+				flag = false;
+			}
+			
+			if(!flag) {
+				model.addAttribute("message",message);
+				return "account-form";
+			}
+			model.addAttribute("account",account);
 			return "redirect:/list";
-			//return "showAccount";
+		}
 	}
 	
 	@GetMapping(value="/list")

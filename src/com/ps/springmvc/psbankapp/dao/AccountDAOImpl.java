@@ -31,7 +31,8 @@ public class AccountDAOImpl implements AccountDAO {
 		accountEntity.setSecurityCode(account.getSecurityCode());
 		try {
 			Session currentSession = sessionFactory.getCurrentSession();
-			currentSession.saveOrUpdate(accountEntity);
+			currentSession.save(accountEntity);
+			//currentSession.saveOrUpdate(accountEntity);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -69,7 +70,10 @@ public class AccountDAOImpl implements AccountDAO {
 		Account account = new Account();
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			AccountEntity accountEntity = (AccountEntity) session.load(AccountEntity.class,accountNo);
+			AccountEntity accountEntity = (AccountEntity) session.get(AccountEntity.class,accountNo);
+			if(accountEntity == null) {
+				return null;
+			}
 			account.setAccountHolderName(accountEntity.getAccountHolderName());
 			account.setDateOfBirth(accountEntity.getDateOfBirth());
 			account.setBalance(accountEntity.getBalance());
