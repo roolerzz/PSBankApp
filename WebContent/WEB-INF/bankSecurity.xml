@@ -15,6 +15,7 @@
 			username-parameter="username"
 			password-parameter="password"
 			default-target-url="/list" />
+			<csrf disabled="true"/>
 	</http>
 	<authentication-manager>
 		<authentication-provider>
@@ -22,13 +23,13 @@
 				<user name="sekhar" password="theguru" authorities="ROLE_ADMIN" />
 				<user name="srinivasan" password="sri" authorities="ROLE_USER" />
 			 </user-service>  -->
-			<user-service properties="/WEB-INF/user.properties" />
-		<!-- 	<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT username, password, 'true' as enabled 
-				FROM member WHERE username = ?"
-				authorities-by-username-query="SELECT member.username, member_role.role 
+			<!-- <user-service properties="/WEB-INF/user.properties" /> -->
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT USERNAME, PASSWORD, 'true' as enabled 
+				FROM member WHERE USERNAME = ?"
+				authorities-by-username-query="SELECT member.USERNAME, member_role.ROLE 
 				as authorities FROM member, member_role 
-                           WHERE member.username = ? AND member.id = member_role.member_id" /> -->
+                           WHERE member.USERNAME = ? AND member.ID = member_role.MEMBER_ID" />
 		</authentication-provider>
 	</authentication-manager>
 	</beans:beans>
